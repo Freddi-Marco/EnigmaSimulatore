@@ -1,14 +1,27 @@
 package com.iiscastelli.enigmasimulatore;
 
-public class Riflessore {
-    private String riflessore;
+import java.util.ArrayList;
 
-    public Riflessore(String s){
-        this.riflessore = s;
+public class Riflessore {
+    private final ArrayList<Integer> riflessore;
+
+    public Riflessore(int n) {
+        this.riflessore = new ArrayList<>();
     }
 
-    public char riflette(char c){
-        int pos = c- 'A';
-        return riflessore.charAt(pos);
+    private void codifica(int n) { // imposta il riflessore in base al numero del rotore, converte la stringa in un array di caratteri e aggiunge le posizioni numeriche delle lettere all'array
+        String[] rotori = {
+                "EJMZALYXVBWFCRQUONTSPIKHGD",
+                "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+                "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+        };
+        for (char c : rotori[n - 1].toCharArray()) {
+            riflessore.add(c - 'A');
+        }
+    }
+    public char lettera(char c) {   //prende un carattere c, trova la posizione riflessa nel riflessore e restituisce il carattere corrispondente
+        int pos = riflessore.get(c - 'A');
+        System.out.println("reflect: " + (char)('A' + pos));
+        return (char)('A' + pos);
     }
 }
