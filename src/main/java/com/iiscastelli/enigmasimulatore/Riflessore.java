@@ -19,7 +19,7 @@ public class Riflessore {
             riflessore.add(c - 'A');
         }
     }
-    public char lettera(char c) {   //prende un carattere c, trova la posizione riflessa nel riflessore e restituisce il carattere corrispondente
+    public char lettera(char c) {    //prende un carattere c, trova la posizione riflessa nel riflessore e restituisce il carattere corrispondente
         int pos = riflessore.get(c - 'A');
         System.out.println("reflect: " + (char)('A' + pos));
         return (char)('A' + pos);
