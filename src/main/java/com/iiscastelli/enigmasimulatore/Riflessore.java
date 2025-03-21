@@ -7,6 +7,7 @@ public class Riflessore {
 
     public Riflessore(int n) {
         this.riflessore = new ArrayList<>();
+        codifica(n);
     }
 
     private void codifica(int n) { // imposta il riflessore in base al numero del rotore, converte la stringa in un array di caratteri e aggiunge le posizioni numeriche delle lettere all'array
