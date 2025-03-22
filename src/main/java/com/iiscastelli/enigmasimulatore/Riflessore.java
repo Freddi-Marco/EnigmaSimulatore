@@ -11,12 +11,12 @@ public class Riflessore {
     }
 
     private void codifica(int n) { // imposta il riflessore in base al numero del rotore, converte la stringa in un array di caratteri e aggiunge le posizioni numeriche delle lettere all'array
-        String[] rotori = {
+        String[] riflessori = {
                 "EJMZALYXVBWFCRQUONTSPIKHGD",
                 "YRUHQSLDPXNGOKMIEBFZCWVJAT",
                 "FVPJIAOYEDRZXWGCTKUQSBNMHL"
         };
-        for (char c : rotori[n - 1].toCharArray()) {
+        for (char c : riflessori[n - 1].toCharArray()) {
             riflessore.add(c - 'A');
         }
     }
