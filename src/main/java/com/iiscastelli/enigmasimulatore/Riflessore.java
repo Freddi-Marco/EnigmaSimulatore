@@ -16,7 +16,7 @@ public class Riflessore {
                 "YRUHQSLDPXNGOKMIEBFZCWVJAT",
                 "FVPJIAOYEDRZXWGCTKUQSBNMHL"
         };
-        for (char c : riflessori[n - 1].toCharArray()) {
+        for (char c : riflessori[n].toCharArray()) {
             riflessore.add(c - 'A');
         }
     }
