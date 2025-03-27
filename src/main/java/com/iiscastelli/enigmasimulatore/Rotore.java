@@ -23,10 +23,14 @@ public class Rotore {
     //Traduce un carattere
     public Character traduci(char c) {
         if (Character.isLetter(c)) {
-            c = Character.toLowerCase(c);
-            int idx = ((int) c - 'a' + pos) % 26;
+            c = Character.toUpperCase(c);
+            int idx = ((int) c - 'A' + pos) % 26;
 
-            return Character.toUpperCase(traduzione.get(idx));
+            int trad = traduzione.get(idx) - pos;
+            if (trad < 'A')
+                trad += 26;
+
+            return Character.toUpperCase((char) trad);
         }
         return null;
     }
@@ -34,16 +38,15 @@ public class Rotore {
     public Character traduci_inverso(char c) {
         if (Character.isLetter(c)) {
             c = Character.toUpperCase(c);
-
-            int pos = 0;
             for (int i = 0; i < traduzione.size(); i++) {
                 if (traduzione.get(i) == c) {
-                    pos = i;
-                    break;
+                    i += pos;
+                    if (i >= 26) {
+                        i -= 26;
+                    }
+                    return (char) ('A' + i);
                 }
             }
-
-            return (char) ('A' + pos);
         }
         return null;
     }

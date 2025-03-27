@@ -23,7 +23,7 @@ public class GestioneRotori {
     }
 
     public Character codifica(char c) {
-        Character res = c;
+        Character res = Character.toUpperCase(c);
         boolean ruota_next = true;
 
         for (int i = 0; i < 3; i++) {
@@ -32,13 +32,16 @@ public class GestioneRotori {
                 ruota_next = r.ruota();
             }
             res = r.traduci(res);
+            System.out.println(i + " " + res);
         }
 
         res = riflessore.lettera(res);
+        System.out.println("R " + res);
 
         for (int i = rotori.size() - 1; i >= 0; i--) {
             Rotore r = rotori.get(i);
             res = r.traduci_inverso(res);
+            System.out.println(i + " " + res);
         }
 
         return res;
