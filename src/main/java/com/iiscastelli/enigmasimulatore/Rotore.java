@@ -4,20 +4,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Rotore {
-    int pos = 0;
-    ArrayList<Character> traduzione;
+    private int pos = 0;
+    private final int checkpoint;
+    private final ArrayList<Character> traduzione;
 
+    String[] traduzioni_rotori = {
+            "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+    };
 
-    public Rotore(String traduzione, int pos) {
+    int[] checkpoints = {
+            16,
+            4,
+            21,
+    };
+
+    public Rotore(int rot, int pos) {
         this.traduzione = new ArrayList<>();
-        for (int i = 0; i < traduzione.length(); i++) {
-            this.traduzione.add(traduzione.charAt(i));
+        this.checkpoint = checkpoints[rot];
+        for (int i = 0; i < traduzioni_rotori[rot].length(); i++) {
+            this.traduzione.add(traduzioni_rotori[rot].charAt(i));
         }
         this.pos = pos % 26;
-    }
-
-    public Rotore() {
-        new Rotore("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 0);
     }
 
     //Traduce un carattere
@@ -57,12 +66,13 @@ public class Rotore {
 
     // Ruota di n spazi il rotore
     public boolean ruota(int n) {
+        int prev = pos;
         this.pos += n % 26;
+        boolean rotate = prev <= checkpoint && pos > checkpoint;
         if (pos >= 26) {
             pos = pos % 26;
-            return true;
         }
-        return false;
+        return rotate;
     }
 
     //Ruota di 1 spazio
