@@ -3,7 +3,7 @@ package com.iiscastelli.enigmasimulatore;
 import java.util.ArrayList;
 
 public class Riflessore {
-    private final ArrayList<Integer> riflessore;
+    private final ArrayList<Character> riflessore;
 
     public Riflessore(int n) {
         this.riflessore = new ArrayList<>();
@@ -16,13 +16,17 @@ public class Riflessore {
                 "YRUHQSLDPXNGOKMIEBFZCWVJAT",
                 "FVPJIAOYEDRZXWGCTKUQSBNMHL"
         };
-        for (char c : riflessori[n - 1].toCharArray()) {
-            riflessore.add(c - 'A');
+        for (char c : riflessori[n].toCharArray()) {
+            riflessore.add(c);
         }
     }
-    public char lettera(char c) {    //prende un carattere c, trova la posizione riflessa nel riflessore e restituisce il carattere corrispondente
-        int pos = riflessore.get(c - 'A');
-        System.out.println("reflect: " + (char)('A' + pos));
-        return (char)('A' + pos);
+
+    // prende un carattere c, trova la posizione riflessa nel riflessore e restituisce il carattere corrispondente
+    public Character lettera(char c) {
+        if (Character.isLetter(c)) {
+            c = Character.toUpperCase(c);
+            return riflessore.get(c - 'A');
+        }
+        return null;
     }
 }
