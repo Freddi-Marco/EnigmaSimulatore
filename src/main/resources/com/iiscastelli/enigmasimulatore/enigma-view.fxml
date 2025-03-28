@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20" alignment="CENTER" style="-fx-background-color: #3a3a3a; -fx-padding: 20;">
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+  <!-- Pannello superiore delle lampadine -->
+  <GridPane hgap="15" vgap="10" alignment="CENTER">
+    <!-- Prima riga lampadine -->
+    <Circle fx:id="lampQ" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampW" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampE" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampR" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampT" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampZ" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampU" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampI" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+    <Circle fx:id="lampO" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="8" GridPane.rowIndex="0"/>
+
+    <!-- Etichette sotto le lampadine -->
+    <Label text="Q" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="W" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="E" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="R" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="T" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="Z" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="U" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="I" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+    <Label text="O" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
+  </GridPane>
+
+  <!-- Tastiera -->
+  <GridPane hgap="8" vgap="8" alignment="CENTER">
+    <!-- Prima riga tasti -->
+    <Button fx:id="btnQ" text="Q" onAction="#handleKeyPress" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnW" text="W" onAction="#handleKeyPress" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnE" text="E" onAction="#handleKeyPress" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnR" text="R" onAction="#handleKeyPress" GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnT" text="T" onAction="#handleKeyPress" GridPane.columnIndex="4" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnZ" text="Z" onAction="#handleKeyPress" GridPane.columnIndex="5" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnU" text="U" onAction="#handleKeyPress" GridPane.columnIndex="6" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnI" text="I" onAction="#handleKeyPress" GridPane.columnIndex="7" GridPane.rowIndex="0" styleClass="enigma-key"/>
+    <Button fx:id="btnO" text="O" onAction="#handleKeyPress" GridPane.columnIndex="8" GridPane.rowIndex="0" styleClass="enigma-key"/>
+
+    <!-- Seconda riga tasti (centrata) -->
+    <Button fx:id="btnA" text="A" onAction="#handleKeyPress" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnS" text="S" onAction="#handleKeyPress" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnD" text="D" onAction="#handleKeyPress" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnF" text="F" onAction="#handleKeyPress" GridPane.columnIndex="4" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnG" text="G" onAction="#handleKeyPress" GridPane.columnIndex="5" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnH" text="H" onAction="#handleKeyPress" GridPane.columnIndex="6" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnJ" text="J" onAction="#handleKeyPress" GridPane.columnIndex="7" GridPane.rowIndex="1" styleClass="enigma-key"/>
+    <Button fx:id="btnK" text="K" onAction="#handleKeyPress" GridPane.columnIndex="8" GridPane.rowIndex="1" styleClass="enigma-key"/>
+
+    <!-- Terza riga tasti -->
+    <Button fx:id="btnP" text="P" onAction="#handleKeyPress" GridPane.columnIndex="2" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnY" text="Y" onAction="#handleKeyPress" GridPane.columnIndex="3" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnX" text="X" onAction="#handleKeyPress" GridPane.columnIndex="4" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnC" text="C" onAction="#handleKeyPress" GridPane.columnIndex="5" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnV" text="V" onAction="#handleKeyPress" GridPane.columnIndex="6" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnB" text="B" onAction="#handleKeyPress" GridPane.columnIndex="7" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnN" text="N" onAction="#handleKeyPress" GridPane.columnIndex="8" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnM" text="M" onAction="#handleKeyPress" GridPane.columnIndex="9" GridPane.rowIndex="2" styleClass="enigma-key"/>
+    <Button fx:id="btnL" text="L" onAction="#handleKeyPress" GridPane.columnIndex="10" GridPane.rowIndex="2" styleClass="enigma-key"/>
+  </GridPane>
 </VBox>
