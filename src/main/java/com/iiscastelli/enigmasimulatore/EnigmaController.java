@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -22,11 +22,9 @@ public class EnigmaController {
     static private GestioneRotori gs;
 
     @FXML
-    private Label welcomeText;
+    private TextArea textInputArea;
     @FXML
-    private Label textInputLabel;
-    @FXML
-    private Label textOutputLabel;
+    private TextArea textOutputArea;
 
     private StringBuilder inputText = new StringBuilder();
     private StringBuilder outputText = new StringBuilder();
@@ -46,14 +44,6 @@ public class EnigmaController {
                 final char letteraF = lettera;
                 gridLuci.add(luci[i * 9 + j], j, i*2);
 
-                Label letteraLabel = new Label(String.valueOf(letteraF));
-                letteraLabel.setPrefWidth(300 / 10);
-                letteraLabel.setPadding(new Insets(0, 0, 10, 0));
-                letteraLabel.setTextAlignment(TextAlignment.CENTER);
-                letteraLabel.setAlignment(Pos.CENTER);
-                letteraLabel.setTextFill(Color.WHITE);
-                gridLuci.add(letteraLabel, j, (i*2)+1);
-
                 lettera++;
                 if (lettera == '[') return;
             }
@@ -68,7 +58,7 @@ public class EnigmaController {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 buttons[i * 9 + j] = new Button("" + lettera);
-                buttons[i * 9 + j].setPrefWidth(600 / 10);
+                buttons[i * 9 + j].setPrefWidth(600 / 10.0);
                 final char letteraF = lettera;
                 buttons[i * 9 + j].setOnAction(e -> {
                     if (gs != null) {
@@ -83,8 +73,9 @@ public class EnigmaController {
                         }
                         inputText.append(letteraF);
                         outputText.append(codificato);
-                        textInputLabel.setText(inputText.toString());
-                        textOutputLabel.setText(outputText.toString());
+                        textInputArea.setText(inputText.toString());
+                        textOutputArea.setText(outputText.toString());
+                        gridTastiera.requestFocus(); // Request focus on the keyboard grid
                     }
                 });
                 gridTastiera.add(buttons[i * 9 + j], j, i);
@@ -99,6 +90,8 @@ public class EnigmaController {
         gs = new GestioneRotori(0, 0, 1, 0, 2, 0, 1);
         inizializzaLuci();
         inizializzaTastiera();
+        buttons[0].requestFocus(); // Ensure the first button has focus initially
+        gridTastiera.requestFocus(); // Ensure the keyboard grid has focus initially
     }
 
     @FXML
