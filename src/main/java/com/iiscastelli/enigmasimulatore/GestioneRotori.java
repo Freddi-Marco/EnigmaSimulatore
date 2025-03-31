@@ -68,10 +68,25 @@ public class GestioneRotori {
         }
     }
 
+    public void resetPosRotori() {
+        for (int i = 0; i < rotori.size(); i++) {
+            setPosRotore(i, 0);
+        }
+    }
     public void setPosRotore(int i, int pos) {
         if (i >= 0 && i <= 2) {
             rotori.get(i).setPos(pos);
         }
     }
+
+    public int getPosRotore(int i) {
+        return rotori.get(i).getPos();
+    }
+
+    public char getPosRotoreChar(int i) {
+        return rotori.get(i).getPosChar();
+    }
+
+
 
 }

@@ -1,7 +1,6 @@
 package com.iiscastelli.enigmasimulatore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Rotore {
     private int pos = 0;
@@ -82,9 +81,19 @@ public class Rotore {
     }
 
     public void setPos(int idx) {
+        if (idx < 0) {
+            idx += 26;
+        }
         this.pos = idx % 26;
     }
 
+    public char getPosChar() {
+        return (char)('A' + pos);
+    }
+
+    public int getPos() {
+        return pos;
+    }
 
     //Ruota di 1 spazio
     public boolean ruota() {

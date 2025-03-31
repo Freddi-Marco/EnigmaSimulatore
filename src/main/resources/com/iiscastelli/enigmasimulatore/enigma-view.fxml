@@ -45,8 +45,8 @@
             <RowConstraints />
         </rowConstraints>
     </GridPane>
-   <HBox fx:id="hBoxRot" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
-   <HBox fx:id="hBoxPos" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+   <HBox fx:id="hBoxRot" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
+   <HBox fx:id="hBoxPos" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
 
     <!-- Tastiera -->
     <GridPane fx:id="gridTastiera" alignment="CENTER" hgap="8" vgap="8">

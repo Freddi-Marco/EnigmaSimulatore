@@ -1,16 +1,12 @@
 package com.iiscastelli.enigmasimulatore;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -27,6 +23,7 @@ public class EnigmaController {
     private GridPane gridTastiera;
     private Button[] buttons;
     private Circle[] luci;
+    private Label[] posLabels;
     static private GestioneRotori gr;
 
     @FXML
@@ -36,6 +33,19 @@ public class EnigmaController {
 
     private StringBuilder inputText = new StringBuilder();
     private StringBuilder outputText = new StringBuilder();
+
+    private void svuotaIOText() {
+        inputText.setLength(0);
+        outputText.setLength(0);
+        textInputArea.setText(inputText.toString());
+        textOutputArea.setText(outputText.toString());
+    }
+
+    private void aggiornaLabelPosRotori() {
+        for (int i = 0; i < posLabels.length; i++) {
+            posLabels[i].setText(String.valueOf(gr.getPosRotoreChar(i)));
+        }
+    }
 
     private void inizializzaChoiceBox() {
         String[] labelRotori = GestioneRotori.getRotoriLabels();
@@ -48,19 +58,51 @@ public class EnigmaController {
                 cb = new ChoiceBox<>(FXCollections.observableArrayList(labelRiflessore));
             }
 
-            hBoxPos.getChildren().add(cb);
+            hBoxRot.getChildren().add(cb);
 
             final int iF = i;
             cb.setOnAction(e -> {
                 gr.setRotore(iF, cb.getSelectionModel().getSelectedItem());
+                svuotaIOText();
+                gr.resetPosRotori();
                 System.out.println("fatto");
             });
             cb.getSelectionModel().select(i % 3);
         }
 
+        posLabels = new Label[3];
+
         for (int i = 0; i < 3; i++) {
-            ChoiceBox<String> cb;
+            Label posLabel = new Label();
+            posLabel.setAlignment(Pos.CENTER);
+            posLabel.setPrefWidth(60);
+            posLabel.setBackground(Background.fill(Color.WHITE));
+            posLabel.setTextFill(Color.BLACK);
+            posLabels[i] = posLabel;
+
+
+            Button plusButton = new Button("+");
+            Button minusButton = new Button("-");
+
+            final int iF = i;
+            plusButton.setOnAction(e -> {
+                gr.setPosRotore(iF, gr.getPosRotore(iF) + 1);
+                aggiornaLabelPosRotori();
+                svuotaIOText();
+            });
+
+            minusButton.setOnAction(e -> {
+                gr.setPosRotore(iF, gr.getPosRotore(iF) - 1);
+                aggiornaLabelPosRotori();
+                svuotaIOText();
+            });
+
+            hBoxPos.getChildren().add(minusButton);
+            hBoxPos.getChildren().add(posLabel);
+            hBoxPos.getChildren().add(plusButton);
         }
+
+        aggiornaLabelPosRotori();
     }
 
     private void inizializzaLuci() {
@@ -119,6 +161,7 @@ public class EnigmaController {
                         outputText.append(codificato);
                         textInputArea.setText(inputText.toString());
                         textOutputArea.setText(outputText.toString());
+                        aggiornaLabelPosRotori();
                         gridTastiera.requestFocus(); // Request focus on the keyboard grid
                     }
                 });
