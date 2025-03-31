@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" onKeyPressed="#onKeyPressed" spacing="20" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
+<VBox alignment="CENTER" onKeyPressed="#onKeyPressed" prefHeight="161.0" prefWidth="853.0" spacing="20" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
+    <HBox alignment="CENTER" prefHeight="55.0" prefWidth="500.0" spacing="150.0">
+        <padding>
+            <Insets top="15.0" />
+        </padding>
+        <children>
+            <Label fx:id="textInputLabel" alignment="CENTER" prefHeight="300.0" prefWidth="600.0" text="Text input" textFill="WHITE">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" />
+                </padding>
+            </Label>
+            <Label fx:id="textOutputLabel" alignment="CENTER" prefHeight="300.0" prefWidth="600.0" text="Text output" textFill="WHITE">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" />
+                </padding>
+            </Label>
+        </children>
+    </HBox>
 
   <!-- Pannello superiore delle lampadine -->
   <GridPane fx:id="gridLuci" alignment="CENTER" hgap="15" vgap="10">

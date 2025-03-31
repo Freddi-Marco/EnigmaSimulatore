@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -12,8 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
-
-import java.util.ArrayList;
 
 public class EnigmaController {
     @FXML
@@ -26,6 +23,13 @@ public class EnigmaController {
 
     @FXML
     private Label welcomeText;
+    @FXML
+    private Label textInputLabel;
+    @FXML
+    private Label textOutputLabel;
+
+    private StringBuilder inputText = new StringBuilder();
+    private StringBuilder outputText = new StringBuilder();
 
     private void inizializzaLuci() {
         luci = new Circle[27];
@@ -77,6 +81,10 @@ public class EnigmaController {
                                 luci[l].setFill(Paint.valueOf("#222222"));
                             }
                         }
+                        inputText.append(letteraF);
+                        outputText.append(codificato);
+                        textInputLabel.setText(inputText.toString());
+                        textOutputLabel.setText(outputText.toString());
                     }
                 });
                 gridTastiera.add(buttons[i * 9 + j], j, i);
