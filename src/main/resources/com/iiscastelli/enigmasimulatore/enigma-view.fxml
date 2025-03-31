@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" onKeyPressed="#onKeyPressed" prefHeight="400.0" prefWidth="1000.0" spacing="20" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
+<VBox alignment="CENTER" onKeyPressed="#onKeyPressed" prefHeight="676.0" prefWidth="1000.0" spacing="20" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
     <HBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" spacing="150.0">
         <padding>
             <Insets top="15.0" />
@@ -45,6 +45,8 @@
             <RowConstraints />
         </rowConstraints>
     </GridPane>
+   <HBox fx:id="hBoxRot" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+   <HBox fx:id="hBoxPos" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
 
     <!-- Tastiera -->
     <GridPane fx:id="gridTastiera" alignment="CENTER" hgap="8" vgap="8">
