@@ -1,12 +1,11 @@
 package com.iiscastelli.enigmasimulatore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Rotore {
     private int pos = 0;
-    private final int checkpoint;
-    private final ArrayList<Character> traduzione;
+    private int checkpoint;
+    private ArrayList<Character> traduzione;
 
     String[] traduzioni_rotori = {
             "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
@@ -21,12 +20,8 @@ public class Rotore {
     };
 
     public Rotore(int rot, int pos) {
-        this.traduzione = new ArrayList<>();
-        this.checkpoint = checkpoints[rot];
-        for (int i = 0; i < traduzioni_rotori[rot].length(); i++) {
-            this.traduzione.add(traduzioni_rotori[rot].charAt(i));
-        }
-        this.pos = pos % 26;
+        setRotore(rot);
+        setPos(pos);
     }
 
     //Traduce un carattere
@@ -73,6 +68,31 @@ public class Rotore {
             pos = pos % 26;
         }
         return rotate;
+    }
+
+    public void setRotore(int rot) {
+        this.traduzione = new ArrayList<>();
+
+        for (int i = 0; i < traduzioni_rotori[rot].length(); i++) {
+            this.traduzione.add(traduzioni_rotori[rot].charAt(i));
+        }
+
+        this.checkpoint = checkpoints[rot];
+    }
+
+    public void setPos(int idx) {
+        if (idx < 0) {
+            idx += 26;
+        }
+        this.pos = idx % 26;
+    }
+
+    public char getPosChar() {
+        return (char)('A' + pos);
+    }
+
+    public int getPos() {
+        return pos;
     }
 
     //Ruota di 1 spazio

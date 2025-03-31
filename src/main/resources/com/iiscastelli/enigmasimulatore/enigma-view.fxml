@@ -1,71 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="20" alignment="CENTER" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
+<VBox alignment="CENTER" onKeyPressed="#onKeyPressed" prefHeight="676.0" prefWidth="1000.0" spacing="20" style="-fx-background-color: #3a3a3a; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iiscastelli.enigmasimulatore.EnigmaController">
+    <HBox alignment="CENTER" prefHeight="200.0" prefWidth="800.0" spacing="150.0">
+        <padding>
+            <Insets top="15.0" />
+        </padding>
+        <children>
+            <TextArea fx:id="textInputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="800.0" wrapText="true">
+                <padding>
+                    <Insets bottom="10.0" left="20.0" />
+                </padding>
+            </TextArea>
+            <TextArea fx:id="textOutputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="800.0" wrapText="true">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" />
+                </padding>
+            </TextArea>
+        </children>
+    </HBox>
 
-  <!-- Pannello superiore delle lampadine -->
-  <GridPane hgap="15" vgap="10" alignment="CENTER">
-    <!-- Prima riga lampadine -->
-    <Circle fx:id="lampQ" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampW" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampE" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampR" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampT" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampZ" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampU" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampI" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="7" GridPane.rowIndex="0"/>
-    <Circle fx:id="lampO" radius="15" fill="#222222" stroke="WHITE" strokeWidth="1" GridPane.columnIndex="8" GridPane.rowIndex="0"/>
+    <!-- Pannello superiore delle lampadine -->
+    <GridPane fx:id="gridLuci" alignment="CENTER" hgap="15" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+   <HBox fx:id="hBoxRot" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
+   <HBox fx:id="hBoxPos" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
 
-    <!-- Etichette sotto le lampadine -->
-    <Label text="Q" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="W" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="E" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="R" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="T" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="Z" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="U" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="I" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-    <Label text="O" textFill="WHITE" GridPane.columnIndex="8" GridPane.rowIndex="1" GridPane.halignment="CENTER"/>
-  </GridPane>
-
-  <!-- Tastiera -->
-  <GridPane hgap="8" vgap="8" alignment="CENTER">
-    <!-- Prima riga tasti -->
-    <Button fx:id="btnQ" text="Q" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnW" text="W" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnE" text="E" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnR" text="R" GridPane.columnIndex="3" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnT" text="T" GridPane.columnIndex="4" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnZ" text="Z" GridPane.columnIndex="5" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnU" text="U" GridPane.columnIndex="6" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnI" text="I" GridPane.columnIndex="7" GridPane.rowIndex="0" styleClass="enigma-key"/>
-    <Button fx:id="btnO" text="O" GridPane.columnIndex="8" GridPane.rowIndex="0" styleClass="enigma-key"/>
-
-    <Button fx:id="btnA" text="A" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnS" text="S" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnD" text="D" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnF" text="F" GridPane.columnIndex="4" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnG" text="G" GridPane.columnIndex="5" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnH" text="H" GridPane.columnIndex="6" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnJ" text="J" GridPane.columnIndex="7" GridPane.rowIndex="1" styleClass="enigma-key"/>
-    <Button fx:id="btnK" text="K" GridPane.columnIndex="8" GridPane.rowIndex="1" styleClass="enigma-key"/>
-
-    <!-- Terza riga tasti -->
-    <Button fx:id="btnP" text="P" GridPane.columnIndex="2" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnY" text="Y" GridPane.columnIndex="3" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnX" text="X" GridPane.columnIndex="4" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnC" text="C" GridPane.columnIndex="5" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnV" text="V" GridPane.columnIndex="6" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnB" text="B" GridPane.columnIndex="7" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnN" text="N" GridPane.columnIndex="8" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnM" text="M" GridPane.columnIndex="9" GridPane.rowIndex="2" styleClass="enigma-key"/>
-    <Button fx:id="btnL" text="L" GridPane.columnIndex="10" GridPane.rowIndex="2" styleClass="enigma-key"/>
-  </GridPane>
+    <!-- Tastiera -->
+    <GridPane fx:id="gridTastiera" alignment="CENTER" hgap="8" vgap="8">
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
 </VBox>

@@ -1,10 +1,32 @@
 package com.iiscastelli.enigmasimulatore;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class GestioneRotori {
     private final ArrayList<Rotore> rotori;
     private final Riflessore riflessore;
+
+    private static TreeMap<String, Integer> mappa_rotori;
+    private static TreeMap<String, Integer> mappa_riflessore;
+
+    public static String[] getRotoriLabels() {
+        mappa_rotori = new TreeMap<>();
+        mappa_rotori.put("I", 0);
+        mappa_rotori.put("II", 1);
+        mappa_rotori.put("III", 2);
+
+        return mappa_rotori.keySet().toArray(new String[0]);
+    }
+
+    public static String[] getRiflessoreLabels() {
+        mappa_riflessore = new TreeMap<>();
+        mappa_riflessore.put("A", 0);
+        mappa_riflessore.put("B", 1);
+        mappa_riflessore.put("C", 2);
+
+        return mappa_riflessore.keySet().toArray(new String[0]);
+    }
 
     public GestioneRotori(int rot1, int idx1, int rot2, int idx2, int rot3, int idx3, int idxRif) {
         rotori = new ArrayList<>(3);
@@ -28,7 +50,7 @@ public class GestioneRotori {
             res = r.traduci(res);
         }
 
-        res = riflessore.lettera(res);
+        res = riflessore.codifica(res);
 
         for (int i = rotori.size() - 1; i >= 0; i--) {
             Rotore r = rotori.get(i);
@@ -37,5 +59,34 @@ public class GestioneRotori {
 
         return res;
     }
+
+    public void setRotore(int i, String rot) {
+        if (i >= 0 && i <= 2) {
+            rotori.get(i).setRotore(mappa_rotori.get(rot));
+        } else if (i == 3) {
+            riflessore.setRiflessore(mappa_riflessore.get(rot));
+        }
+    }
+
+    public void resetPosRotori() {
+        for (int i = 0; i < rotori.size(); i++) {
+            setPosRotore(i, 0);
+        }
+    }
+    public void setPosRotore(int i, int pos) {
+        if (i >= 0 && i <= 2) {
+            rotori.get(i).setPos(pos);
+        }
+    }
+
+    public int getPosRotore(int i) {
+        return rotori.get(i).getPos();
+    }
+
+    public char getPosRotoreChar(int i) {
+        return rotori.get(i).getPosChar();
+    }
+
+
 
 }
