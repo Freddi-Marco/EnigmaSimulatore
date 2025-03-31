@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -41,7 +42,17 @@ public class EnigmaController {
                 luci[i * 9 + j].setRadius(15);
                 luci[i * 9 + j].setStroke(Color.WHITE);
                 luci[i * 9 + j].setStrokeWidth(1);
+
                 final char letteraF = lettera;
+
+                Label letteraLabel = new Label(String.valueOf(letteraF));
+                letteraLabel.setPrefWidth(300 / 10);
+                letteraLabel.setPadding(new Insets(0, 0, 10, 0));
+                letteraLabel.setTextAlignment(TextAlignment.CENTER);
+                letteraLabel.setAlignment(Pos.CENTER);
+                letteraLabel.setTextFill(Color.WHITE);
+                gridLuci.add(letteraLabel, j, (i*2)+1);
+
                 gridLuci.add(luci[i * 9 + j], j, i*2);
 
                 lettera++;
