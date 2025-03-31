@@ -1,26 +1,33 @@
 package com.iiscastelli.enigmasimulatore;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.TextAlignment;
 
 public class EnigmaController {
+    public HBox hBoxRot;
+    public HBox hBoxPos;
     @FXML
     private GridPane gridLuci;
     @FXML
     private GridPane gridTastiera;
     private Button[] buttons;
     private Circle[] luci;
-    static private GestioneRotori gs;
+    static private GestioneRotori gr;
 
     @FXML
     private TextArea textInputArea;
@@ -29,6 +36,32 @@ public class EnigmaController {
 
     private StringBuilder inputText = new StringBuilder();
     private StringBuilder outputText = new StringBuilder();
+
+    private void inizializzaChoiceBox() {
+        String[] labelRotori = GestioneRotori.getRotoriLabels();
+        String[] labelRiflessore = GestioneRotori.getRiflessoreLabels();
+        for (int i = 0; i < 4; i++) {
+            ChoiceBox<String> cb;
+            if (i < 3)
+                cb = new ChoiceBox<>(FXCollections.observableArrayList(labelRotori));
+            else {
+                cb = new ChoiceBox<>(FXCollections.observableArrayList(labelRiflessore));
+            }
+
+            hBoxPos.getChildren().add(cb);
+
+            final int iF = i;
+            cb.setOnAction(e -> {
+                gr.setRotore(iF, cb.getSelectionModel().getSelectedItem());
+                System.out.println("fatto");
+            });
+            cb.getSelectionModel().select(i % 3);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            ChoiceBox<String> cb;
+        }
+    }
 
     private void inizializzaLuci() {
         luci = new Circle[27];
@@ -72,8 +105,8 @@ public class EnigmaController {
                 buttons[i * 9 + j].setPrefWidth(600 / 10.0);
                 final char letteraF = lettera;
                 buttons[i * 9 + j].setOnAction(e -> {
-                    if (gs != null) {
-                        final char codificato = gs.codifica(letteraF);
+                    if (gr != null) {
+                        final char codificato = gr.codifica(letteraF);
                         final int lampIdx = codificato - 'A';
                         for (int l = 0; l < 26; l++) {
                             if (l == lampIdx) {
@@ -96,9 +129,12 @@ public class EnigmaController {
         }
     }
 
+
+
     @FXML
     public void initialize() {
-        gs = new GestioneRotori(0, 0, 1, 0, 2, 0, 1);
+        gr = new GestioneRotori(0, 0, 1, 0, 2, 0, 0);
+        inizializzaChoiceBox();
         inizializzaLuci();
         inizializzaTastiera();
         buttons[0].requestFocus(); // Ensure the first button has focus initially
