@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,12 +16,32 @@
             <Insets top="15.0" />
         </padding>
         <children>
-            <TextArea fx:id="textInputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" promptText="Input text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
+            <TextArea fx:id="textInputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="600.0" promptText="Input text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
                 <padding>
                     <Insets bottom="10.0" left="20.0" />
                 </padding>
             </TextArea>
-            <TextArea fx:id="textOutputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" promptText="Output Text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
+      
+      
+          <!-- Pannello superiore delle lampadine -->
+          <GridPane fx:id="gridLuci" alignment="CENTER" hgap="15" vgap="10">
+              <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+              </rowConstraints>
+          </GridPane>
+            <TextArea fx:id="textOutputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="600.0" promptText="Output Text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
                 <padding>
                     <Insets bottom="10.0" left="10.0" />
                 </padding>
@@ -28,26 +49,6 @@
         </children>
     </HBox>
    <Button mnemonicParsing="false" onAction="#svuotaIOText" prefHeight="25.0" prefWidth="56.0" text="Clear" />
-
-
-    <!-- Pannello superiore delle lampadine -->
-    <GridPane fx:id="gridLuci" alignment="CENTER" hgap="15" vgap="10">
-        <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-        </rowConstraints>
-    </GridPane>
    <HBox fx:id="hBoxRot" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
    <HBox fx:id="hBoxPos" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
 
@@ -72,4 +73,26 @@
             <RowConstraints />
         </rowConstraints>
     </GridPane>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="99.0" prefWidth="211.0" text="Pannello Scambiatore" textFill="WHITE" />
+         <GridPane fx:id="gridCavi" alignment="CENTER" hgap="15" vgap="10">
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+         </GridPane>
+      </children>
+   </HBox>
 </VBox>
