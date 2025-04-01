@@ -19,6 +19,7 @@ public class EnigmaApplication extends Application {
         stage.setTitle("Enigma");
         stage.setWidth(1200);
         stage.setHeight(800);
+        stage.setMaximized(true);
 
         // Carica e imposta l'icona
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("icon.png")));
