@@ -34,6 +34,7 @@ public class EnigmaController {
     private StringBuilder inputText = new StringBuilder();
     private StringBuilder outputText = new StringBuilder();
 
+    @FXML
     private void svuotaIOText() {
         inputText.setLength(0);
         outputText.setLength(0);
