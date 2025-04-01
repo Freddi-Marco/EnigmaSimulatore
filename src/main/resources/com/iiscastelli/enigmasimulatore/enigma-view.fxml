@@ -14,18 +14,19 @@
             <Insets top="15.0" />
         </padding>
         <children>
-            <TextArea fx:id="textInputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="800.0" wrapText="true">
+            <TextArea fx:id="textInputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" promptText="Input text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
                 <padding>
                     <Insets bottom="10.0" left="20.0" />
                 </padding>
             </TextArea>
-            <TextArea fx:id="textOutputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="800.0" wrapText="true">
+            <TextArea fx:id="textOutputArea" editable="false" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" promptText="Output Text" style="-fx-font-size: 15px; -fx-background-color: #3a3a3a;" wrapText="true">
                 <padding>
                     <Insets bottom="10.0" left="10.0" />
                 </padding>
             </TextArea>
         </children>
     </HBox>
+
 
     <!-- Pannello superiore delle lampadine -->
     <GridPane fx:id="gridLuci" alignment="CENTER" hgap="15" vgap="10">
