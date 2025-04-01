@@ -1,26 +1,21 @@
-# Simulatore Enigma
-Questo progetto è un simulatore in Java della macchina crittografica Enigma utilizzata durante la Seconda Guerra Mondiale. Il simulatore replica fedelmente il funzionamento della macchina originale, permettendo di cifrare e decifrare messaggi.
+# Introduzione
+## Storia 
+Inventata dall’inventore tedesco tedesco Arthur Scherbius nel 1918 la macchina Enigma è stata uno strumento di crittografia utilizzato principalmente dalle forze armate tedesche durante la Seconda Guerra Mondiale per proteggere le comunicazioni militari.
+#### Come funzionava
+Enigma utilizzava una serie di rotori elettrici che modificavano continuamente l'alfabeto cifrato, rendendo ogni messaggio praticamente impossibile da decifrare senza conoscere la configurazione esatta della macchina.
+
+Ogni giorno, gli operatori cambiavano la posizione dei rotori e le impostazioni iniziali, creando milioni di combinazioni possibili.
+## Il Nostro Progetto
+Questo simulatore offre un'esperienza interattiva per comprendere il funzionamento interno della prima versione della macchina di Enigma, consentendo agli utenti di esplorare e sperimentare con la crittografia storica.
 
 ## Funzionalità
 - **Cifratura e decifratura**: Consente di cifrare e decifrare testi utilizzando la logica della macchina Enigma.
 - **Configurazione personalizzabile**: Permette di impostare vari parametri, come la sequenza dei rotori, le posizioni iniziali e le connessioni della plugboard.
-
-## Struttura del Progetto
-Il progetto è organizzato come segue:
-- `src/main`: Contiene il codice sorgente principale del simulatore.
-- `.mvn/wrapper`: Include i file per il wrapper di Maven, facilitando la gestione delle dipendenze e la compilazione.
-- `pom.xml`: Il file di configurazione di Maven, che specifica le dipendenze e le impostazioni del progetto.
-
-## Requisiti
-- **Java Development Kit (JDK)**: Versione 8 o superiore.
-- **Maven**: Per la gestione delle dipendenze e la compilazione del progetto.
-
-## Note
-
-Questo progetto è stato sviluppato come esercizio scolastico e potrebbe non essere completamente ottimizzato per applicazioni in produzione.
+- **Visualizzazione dettagliata**: Mostra i dettagli del processo di cifratura, inclusi i valori intermedi e le trasformazioni effettuate.
+- **Interfaccia a Riga di Comando**: Fornisce un'interfaccia semplice e intuitiva per interagire con il simulatore tramite il terminale.
 
 
 
 ## Riconoscimenti
-
-Si ringraziano tutti coloro che hanno contribuito allo sviluppo e alla documentazione della macchina Enigma, fornendo le basi teoriche per questo simulatore
+ 
+Francesco Colombo - Eisa Faris - Freddi Marco - Zaafrani Ahmed
