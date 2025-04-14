@@ -30,3 +30,6 @@ Colombo Francesco - Eisa Faris - Freddi Marco - Zaafrani Ahmed.
 Scuola I.I.S. Castelli di Brescia, articolazione Informatica. 
 
 Classe 4AI - Anno Scolastico 2024/2025
+
+##Link presentazione
+https://www.canva.com/design/DAGj9BpCPNA/yrpZSpW7hD3eUkvP_o-BEw/edit?ui=eyJEIjp7IlAiOnsiQiI6ZmFsc2V9fX0
